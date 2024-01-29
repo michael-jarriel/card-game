@@ -31,6 +31,7 @@ func _ready():
 func on_card_click(event, card):
 	if (event is InputEventMouseButton and event.pressed):
 		
+		# temporarily swap textures
 		var sprite = card.get_node("Sprite2D")
 		if (sprite.texture == card_back_texture):
 			sprite.texture = card_front_texture
