@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://njcpv2gic4pp"]
+
+[ext_resource type="Texture2D" uid="uid://d2hwrklsly2lk" path="res://assets/card_back.png" id="1_otg0i"]
+[ext_resource type="Script" path="res://scenes/objects/card.gd" id="1_wxyen"]
+
+[node name="Card" type="Node2D"]
+script = ExtResource("1_wxyen")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.84, 0.84)
+texture = ExtResource("1_otg0i")
+
+[node name="FanTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FanTimer" to="." method="_on_fan_timer_timeout"]
