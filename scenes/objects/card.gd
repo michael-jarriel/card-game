@@ -1,5 +1,7 @@
 extends Node2D
 
+signal card_click(event, card)
+
 var final_pos: Vector2 = Vector2.ZERO
 var speed: float = 3500
 var is_moving: bool = false
@@ -24,3 +26,6 @@ func _process(delta):
 
 func _on_fan_timer_timeout():
 	is_moving = true
+
+func _on_area_2d_input_event(_viewport, event, _shape_idx):
+	card_click.emit(event, self)

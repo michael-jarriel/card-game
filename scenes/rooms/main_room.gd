@@ -2,6 +2,9 @@ extends Node2D
 
 var card_scene: PackedScene = preload("res://scenes/objects/card.tscn")
 
+var card_back_texture = preload("res://assets/card_back.png")
+var card_front_texture = preload("res://assets/card_front.png")
+
 func _ready():
 	
 	# initial fanning out
@@ -22,4 +25,15 @@ func _ready():
 			card_instance.rotation_degrees = -90
 			curr_wait_time += 0.04
 			add_child(card_instance)
+			card_instance.connect("card_click", on_card_click)
 		curr_wait_time += 0.2
+
+func on_card_click(event, card):
+	if (event is InputEventMouseButton and event.pressed):
+		
+		# temporarily swap textures
+		var sprite = card.get_node("Sprite2D")
+		if (sprite.texture == card_back_texture):
+			sprite.texture = card_front_texture
+		else:
+			sprite.texture = card_back_texture

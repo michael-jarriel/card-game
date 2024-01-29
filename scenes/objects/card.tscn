@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://njcpv2gic4pp"]
+[gd_scene load_steps=4 format=3 uid="uid://njcpv2gic4pp"]
 
 [ext_resource type="Texture2D" uid="uid://d2hwrklsly2lk" path="res://assets/card_back.png" id="1_otg0i"]
 [ext_resource type="Script" path="res://scenes/objects/card.gd" id="1_wxyen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcfbt"]
+size = Vector2(170, 110)
 
 [node name="Card" type="Node2D"]
 script = ExtResource("1_wxyen")
@@ -14,4 +17,10 @@ texture = ExtResource("1_otg0i")
 [node name="FanTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_xcfbt")
+
 [connection signal="timeout" from="FanTimer" to="." method="_on_fan_timer_timeout"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
