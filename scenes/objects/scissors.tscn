@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7gio82b8vg3l"]
+
+[ext_resource type="Texture2D" uid="uid://c6xauru4efq4x" path="res://assets/Scissors.png" id="1_udpv3"]
+
+[node name="Scissors" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("1_udpv3")
