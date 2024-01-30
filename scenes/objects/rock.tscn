@@ -1,9 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlx5r1sbrdfga"]
+[gd_scene load_steps=4 format=3 uid="uid://dlx5r1sbrdfga"]
 
 [ext_resource type="Texture2D" uid="uid://dsxm20qdojb77" path="res://assets/rock.png" id="1_eaa2s"]
+[ext_resource type="Script" path="res://scenes/objects/rock.gd" id="1_ly5ou"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eiy8m"]
+size = Vector2(257, 223)
 
 [node name="Rock" type="Node2D"]
+script = ExtResource("1_ly5ou")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.415, 0.415)
+scale = Vector2(0.475, 0.475)
 texture = ExtResource("1_eaa2s")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 0.5)
+shape = SubResource("RectangleShape2D_eiy8m")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
