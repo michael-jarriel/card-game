@@ -2,6 +2,10 @@ extends Node2D
 
 var card_scene: PackedScene = preload("res://scenes/objects/card.tscn")
 
+var card_values: Array[String] = ["ace", "two", "three", "four", "five",
+	"six", "seven", "eight", "nine", "ace", "two", "three", "four", "five",
+	"six", "seven", "eight", "nine"]
+
 func _ready():
 	
 	# initial fanning out
@@ -20,6 +24,12 @@ func _ready():
 			card_instance.position = Vector2(room_width / 2, -300)
 			card_instance.time_to_wait = curr_wait_time
 			card_instance.rotation_degrees = -90
-			curr_wait_time += 0.04
+			
+			# assign random value
+			var chosen_index = randi_range(0, card_values.size() - 1)
+			card_instance.value = card_values[chosen_index]
+			card_values.remove_at(chosen_index)
+			
 			add_child(card_instance)
+			curr_wait_time += 0.04
 		curr_wait_time += 0.2

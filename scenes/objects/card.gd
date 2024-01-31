@@ -7,6 +7,7 @@ var rps_room: PackedScene = preload("res://scenes/rooms/rps_room.tscn")
 var final_pos: Vector2 = Vector2.ZERO
 var is_moving: bool = false
 var time_to_wait: float = 0
+var value = 0
 
 func _ready():
 	$FanTimer.start(time_to_wait)
